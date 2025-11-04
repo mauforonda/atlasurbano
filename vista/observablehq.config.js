@@ -4,6 +4,6 @@ export default {
   root: "src" ,
   footer: "",
   pager: false,
-  output: "../../docs",
+  output: "../docs",
   base: "/atlasurbano"
 };
