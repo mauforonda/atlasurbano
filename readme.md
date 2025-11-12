@@ -179,10 +179,23 @@ Mientras el geoportal no cambie mucho, debería ser posible volver a correr este
 
 Construyo un mapa que muestra indicadores por manzano que me parecieron básicos e interesantes. En [preparar_mapa.py](preparar_mapa.py) describo cómo se construye cada indicador a partir de los datos mencionados. Guardo estos indicadores en un documento `geojson` temporal que, tras aplicar varias tácticas para ahorrar espacio, convierto en un documento `pmtiles`, que es la fuente desde la que se muestra el mapa. El mapa consume segmentos de este `pmtiles` para mostrar la fracción necesaria de polígonos y datos de manzanos, además de un listado de ciudades y un diccionario de campos, ambos también producidos en [preparar_mapa.py](preparar_mapa.py). Para ésto, utiliza `maplibre-gl` sobre `observable-framework` (ver [index.md](vista/src/index.md)).
 
-Para agregar o cambiar indicadores bastaría con 
+Para agregar o cambiar indicadores bastaría con:
 
-1. Editar [preparar_mapa.py](preparar_mapa.py) para procesar los datos y crear el `geojson`.
-2. Convertir ese `geojson` en un `pmtiles` con `tippecanoe`.
-3. Editar [capas.js](vista/src/components/capas.js) para definir cómo debería mostrarse.
+Editar [preparar_mapa.py](preparar_mapa.py) para procesar los datos y crear el `geojson`.
+
+Convertir ese `geojson` en un `pmtiles` con `tippecanoe`.
+
+```sh
+tippecanoe -Z8 -z14 \
+  --no-line-simplification \
+  --no-simplification-of-shared-nodes \
+  --no-tiny-polygon-reduction \
+  --detect-shared-borders \
+  --maximum-tile-bytes=1500000 \
+  -f -o tiles/atlas.pmtiles \
+  temporal/manzanos.geojson
+```
+
+Editar [capas.js](vista/src/components/capas.js) para definir cómo debería mostrarse.
 
 🌱

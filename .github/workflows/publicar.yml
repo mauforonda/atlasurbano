@@ -13,11 +13,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install Tippecanoe
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y tippecanoe
-
     - name: setup python
       uses: actions/setup-python@v5
       with:
@@ -35,6 +30,11 @@ jobs:
         mkdir -p temporal
         ./preparar_mapa.py
 
+    - name: instalar tippecanoe
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tippecanoe
+
     - name: crear pmtiles
       run: |
         tippecanoe -Z8 -z14 \
@@ -43,9 +43,36 @@ jobs:
           --no-tiny-polygon-reduction \
           --detect-shared-borders \
           --maximum-tile-bytes=1500000 \
-          -f -o vista/src/atlas.pmtiles \
+          -f -o atlas.pmtiles \
           temporal/manzanos.geojson
-    
+
+    - name: publish pmtiles
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GIT_AUTHOR_NAME: atlasurbano_bot
+        GIT_AUTHOR_EMAIL: atlasurbano_bot@example.com
+        GIT_COMMITTER_NAME: atlasurbano_bot
+        GIT_COMMITTER_EMAIL: atlasurbano_bot@example.com
+        REPO: ${{ github.repository }}
+      run: |
+        mkdir -p /tmp/pmtiles-publish
+        mv atlas.pmtiles /tmp/pmtiles-publish/atlas.pmtiles
+        cd /tmp/pmtiles-publish
+        git init -b pmtiles
+        git config user.name  "$GIT_AUTHOR_NAME"
+        git config user.email "$GIT_AUTHOR_EMAIL"
+        git add -A
+        git commit -m "Publish pmtiles"
+        git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+        git push --force origin pmtiles
+
+    - name: write pmtiles url module
+      env:
+        PMTILES_URL: https://raw.githubusercontent.com/${{ github.repository }}/pmtiles/atlas.pmtiles
+      run: |
+        printf 'export const PMTILES_URL = "%s";\n' "$PMTILES_URL" > vista/src/components/pmtiles-url.js
+        echo "PMTILES_URL set to $PMTILES_URL"
+
     - name: setup docs
       run: |
         mkdir -p docs

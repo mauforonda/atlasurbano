@@ -7,11 +7,13 @@ import re
 from shapely.geometry import mapping
 import json
 import numpy as np
+from pathlib import Path
 
 gdf = gpd.read_parquet("datos/manzanos.parquet")
 p = pd.read_parquet("datos/poblacion.parquet")
 f = pd.read_parquet("datos/fichas.parquet")
 
+OUTPUT = Path("vista/src/")
 
 def filterSum(df, regex):
     return df[[c for c in df.columns if re.search(regex, c)]].sum(axis=1)
@@ -35,7 +37,7 @@ def defineCities(manzanos, poblacion, output_path, min_poblacion=5000):
     gdf["x"] = gdf.center.x
     gdf["y"] = gdf.center.y
     gdf.nombre = gdf.nombre.str.title()
-    with open(output_path, "w") as f:
+    with open(OUTPUT / output_path, "w") as f:
         json.dump(
             gdf[gdf.personas >= min_poblacion][
                 ["departamento", "municipio", "nombre", "personas", "x", "y"]
@@ -71,7 +73,7 @@ def save_geojson(gdf, out_path, indice_path, as_int):
     fc = {"type": "FeatureCollection", "features": features}
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(fc, f, ensure_ascii=False, separators=(",", ":"))
-    with open(indice_path, "w") as f:
+    with open(OUTPUT / indice_path, "w") as f:
         json.dump(indice_columnas, f)
 
 
@@ -218,7 +220,7 @@ consolidado = (
 save_geojson(
     consolidado,
     "temporal/manzanos.geojson",
-    "vista/src/campos.json",
+    "campos.json",
     ["personas", "personas_por_hectarea", "masculinidad", "dependencia_economica"],
 )
-defineCities(gdf, p, "vista/src/ciudades.json", 5000)
+defineCities(gdf, p, "ciudades.json", 5000)

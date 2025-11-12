@@ -48,15 +48,15 @@ maplibregl.addProtocol("pmtiles", protocol.tile);
 
 ```js
 // Cargar el pmtiles
-const tiles = FileAttachment("./atlas.pmtiles");
-const pm = new PMTiles(tiles.href);
+import { PMTILES_URL } from "./components/pmtiles-url.js";
+const pm = new PMTiles(PMTILES_URL);
 protocol.add(pm);
 ```
 
 ```js
 // Definiciones de campos y ciudades
-const campos = await FileAttachment("campos.json").json();
-const ciudades = await FileAttachment("ciudades.json").json();
+const campos = await FileAttachment("./campos.json").json();
+const ciudades = await FileAttachment("./ciudades.json").json();
 ```
 
 ```js
@@ -284,7 +284,7 @@ const ready = new Promise((resolve) => {
     if (!map.getSource("atlas")) {
       map.addSource("atlas", {
         type: "vector",
-        url: `pmtiles://${tiles.href}`,
+        url: `pmtiles://${PMTILES_URL}`,
         minzoom: 8,
         maxzoom: 14,
       });
