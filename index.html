@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.3">
+<title>Atlas urbano | Atlas Urbano</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight,alt,wide.db1cdf55.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.ea9fd553.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight,alt,wide.db1cdf55.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.ea9fd553.css">
+<link rel="modulepreload" href="./_observablehq/client.2ebf0c42.js">
+<link rel="modulepreload" href="./_observablehq/runtime.e080113b.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.73a8ec5a.js">
+<link rel="modulepreload" href="./_npm/maplibre-gl@5.13.0/6a6517ff.js">
+<link rel="modulepreload" href="./_npm/pmtiles@4.3.0/5b853975.js">
+<link rel="modulepreload" href="./_import/components/pmtiles-url.7fdac6b0.js">
+<link rel="modulepreload" href="./_import/components/capas.96486244.js">
+<link rel="modulepreload" href="./_import/components/inputs.180c695d.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/e780feca.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.4ef1d259.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/d761ef9b.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/18cbf477.js">
+<link rel="modulepreload" href="./_npm/fflate@0.8.2/e113a0e7.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/0f2de24d.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/65eb105b.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/7ef8fb2e.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/aeb57b94.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/1d2aed74.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/5ced1d52.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/9ba9c7f3.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/4202580c.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/9cffc2bd.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/cdd7e898.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/b4e2ad9a.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e804d15.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/86074ef6.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/40599fb3.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/e49e792c.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/8d1e5425.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/20d3f133.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/7553081f.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/0dfd751c.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/3c90ee06.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/843b6a76.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/ba24c2e7.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/4d94e5b7.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/6d3a6726.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/9f03c579.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/07c9626f.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/b58a267d.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/004da2ac.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/b5786b3f.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/53fe8176.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/e08981d9.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/02d43215.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/cbf6ba23.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/aa00730b.js">
+<link rel="icon" href="https://mauforonda.github.io/images/icon.svg" type="image/svg" sizes="32x32">
+<script type="module">
+
+import {define} from "./_observablehq/client.2ebf0c42.js";
+import {registerFile} from "./_observablehq/stdlib.73a8ec5a.js";
+
+registerFile("./campos.json", {"name":"./campos.json","mimeType":"application/json","path":"./_file/campos.d9049a43.json","lastModified":1763960893602,"size":916});
+registerFile("./ciudades.json", {"name":"./ciudades.json","mimeType":"application/json","path":"./_file/ciudades.1227a3a5.json","lastModified":1763960928186,"size":17099});
+
+define({id: "d6d41953", mode: "inline", inputs: ["ciudadInput","display"], body: async (ciudadInput,display) => {
+display(await(
+ciudadInput
+))
+}});
+
+define({id: "41f8d30a", mode: "inline", inputs: ["seleccionInput","display"], body: async (seleccionInput,display) => {
+display(await(
+seleccionInput
+))
+}});
+
+define({id: "655ea456", mode: "inline", inputs: ["leyendaLineal","indice","seleccion","display"], body: async (leyendaLineal,indice,seleccion,display) => {
+display(await(
+leyendaLineal(
+      indice[seleccion].colormap, 
+      indice[seleccion].ayuda,
+      indice[seleccion].format
+    )
+))
+}});
+
+define({id: "5e35aeec", mode: "inline", inputs: ["leyendaCategorias","invalido","display"], body: async (leyendaCategorias,invalido,display) => {
+display(await(
+leyendaCategorias([["sin datos", invalido]])
+))
+}});
+
+define({id: "fab251a8", outputs: ["maplibregl","PMTiles","Protocol","protocol"], body: async () => {
+const [{default: maplibregl}, {PMTiles, Protocol}] = await Promise.all([import("./_npm/maplibre-gl@5.13.0/6a6517ff.js"), import("./_npm/pmtiles@4.3.0/5b853975.js")]);
+// Dependencias para el mapa
+const protocol = new Protocol();
+maplibregl.addProtocol("pmtiles", protocol.tile);
+return {maplibregl,PMTiles,Protocol,protocol};
+}});
+
+define({id: "155ced8b", inputs: ["PMTiles","protocol"], outputs: ["PMTILES_URL","pm"], body: async (PMTiles,protocol) => {
+const {PMTILES_URL} = await import("./_import/components/pmtiles-url.7fdac6b0.js");
+// Cargar el pmtiles
+const pm = new PMTiles(PMTILES_URL);
+protocol.add(pm);
+return {PMTILES_URL,pm};
+}});
+
+define({id: "0fd06ca1", inputs: ["FileAttachment"], outputs: ["campos","ciudades"], body: async (FileAttachment) => {
+// Definiciones de campos y ciudades
+const campos = await FileAttachment("./campos.json").json();
+const ciudades = await FileAttachment("./ciudades.json").json();
+return {campos,ciudades};
+}});
+
+define({id: "8d33259d", outputs: ["invalido","indice","autoSelect"], body: async () => {
+const [{indice}, {autoSelect}] = await Promise.all([import("./_import/components/capas.96486244.js"), import("./_import/components/inputs.180c695d.js")]);
+// Cargar componentes en otros js y definir constantes
+const invalido = "rgba(180, 180, 199, 0.36)";
+
+return {invalido,indice,autoSelect};
+}});
+
+define({id: "d57ad457", inputs: ["ciudades","localStorage"], outputs: ["idCiudad","ciudad_key","ciudad_default","storedId","ciudad_inicial"], body: (ciudades,localStorage) => {
+// Qué ciudad mostrar al cargar el mapa
+const idCiudad = (d) => `${d.departamento}|${d.municipio}|${d.nombre}`;
+const ciudad_key = "atlasurbano_ciudad";
+const ciudad_default = ciudades[0];
+const storedId = localStorage.getItem(ciudad_key);
+const ciudad_inicial =
+  ciudades.find((d) => idCiudad(d) === storedId) ?? ciudad_default;
+return {idCiudad,ciudad_key,ciudad_default,storedId,ciudad_inicial};
+}});
+
+define({id: "00c3b845", inputs: ["autoSelect","ciudades","ciudad_inicial","Generators"], outputs: ["ciudadInput","ciudad"], body: (autoSelect,ciudades,ciudad_inicial,Generators) => {
+// Menú de ciudades
+const ciudadInput = autoSelect(ciudades, (d) => d.nombre, ciudad_inicial);
+const ciudad = Generators.input(ciudadInput);
+return {ciudadInput,ciudad};
+}});
+
+define({id: "5b8e2a45", inputs: ["localStorage","ciudad_inicial"], outputs: ["posicion_key","posicion_stored","posicion_inicial","tiene_posicion_stored"], body: (localStorage,ciudad_inicial) => {
+// Desde qué coordenadas cargar el mapa
+const posicion_key = "atlasurbano_posicion";
+const posicion_stored = localStorage.getItem(posicion_key);
+const posicion_inicial = posicion_stored
+  ? (() => {
+      const p = JSON.parse(posicion_stored);
+      return [p.x, p.y];
+    })()
+  : [ciudad_inicial.x, ciudad_inicial.y];
+const tiene_posicion_stored = !!posicion_stored;
+return {posicion_key,posicion_stored,posicion_inicial,tiene_posicion_stored};
+}});
+
+define({id: "5546ec3a", inputs: ["map","localStorage","posicion_key"], body: (map,localStorage,posicion_key) => {
+// Luego cada movimiento, guardar las coordenadas localmente para futuras sesiones
+map.on("moveend", () => {
+  const centro = map.getCenter();
+  localStorage.setItem(
+    posicion_key,
+    JSON.stringify({ x: centro.lng, y: centro.lat })
+  );
+});
+}});
+
+define({id: "f7966508", inputs: ["map","tiene_posicion_stored"], body: (map,tiene_posicion_stored) => {
+map.__skipInitialFly = tiene_posicion_stored;
+}});
+
+define({id: "84a7c40f", inputs: ["ciudad","map","localStorage","ciudad_key","idCiudad"], body: async (ciudad,map,localStorage,ciudad_key,idCiudad) => {
+// Volar a la ciudad seleccionada y guardarla localmente
+{
+  await ciudad;
+  if (map.__skipInitialFly) {
+    map.__skipInitialFly = false;
+  } else {
+    map.flyTo({ center: [ciudad.x, ciudad.y], minZoom: 10, zoom: 11 });
+    localStorage.setItem(ciudad_key, idCiudad(ciudad));
+  }
+}
+}});
+
+define({id: "cfd5da35", inputs: ["Plot","d3"], outputs: ["leyendaLineal","leyendaCategorias"], body: (Plot,d3) => {
+// Leyendas
+
+function leyendaLineal(colormap, ayuda, format) {
+  const valores = colormap.map((c) => c[0]);
+  const domain = [Math.min(...valores), Math.max(...valores)];
+  return Plot.legend({
+    margin: 0,
+    height: 50,
+    label: ayuda,
+    className: "leyenda",
+    color: {
+      type: "linear",
+      domain: domain,
+      range: colormap.map((c) => c[1]),
+      tickFormat: d3.format(format),
+    },
+  });
+}
+
+function leyendaCategorias(colormap) {
+  const valores = colormap.map((c) => c[0]);
+  return Plot.legend({
+    margin: 0,
+    className: "leyenda",
+    swatchHeight: 10,
+    color: {
+      domain: valores,
+      range: colormap.map((c) => c[1]),
+    },
+  });
+}
+return {leyendaLineal,leyendaCategorias};
+}});
+
+define({id: "c6f847fc", inputs: ["localStorage"], outputs: ["seleccion_key","seleccion_default","seleccion_stored","seleccion_inicial"], body: (localStorage) => {
+// Qué variable cargar al inicio
+const seleccion_key = "atlasurbano_variable";
+const seleccion_default = "personas_por_hectarea";
+const seleccion_stored = localStorage.getItem(seleccion_key);
+const seleccion_inicial = seleccion_stored ?? seleccion_default;
+return {seleccion_key,seleccion_default,seleccion_stored,seleccion_inicial};
+}});
+
+define({id: "38b8b69c", inputs: ["Inputs","indice","seleccion_inicial","Generators"], outputs: ["seleccionInput","seleccion"], body: (Inputs,indice,seleccion_inicial,Generators) => {
+// Menú de variables
+const seleccionInput = Inputs.select(Object.keys(indice), {
+  required: true,
+  format: (d) => indice[d].nombre,
+  value: seleccion_inicial,
+});
+const seleccion = Generators.input(seleccionInput);
+return {seleccionInput,seleccion};
+}});
+
+define({id: "6df928f1", inputs: ["localStorage","seleccion_key","seleccion"], body: (localStorage,seleccion_key,seleccion) => {
+// Tras seleccionar una variable, guardarla localmente para futuras sesiones
+localStorage.setItem(seleccion_key, seleccion);
+}});
+
+define({id: "2e20f103", inputs: ["campos","invalido"], outputs: ["capaLineal"], body: (campos,invalido) => {
+// Crear capas para maplibre
+
+function capaLineal(campo, colormap) {
+  return {
+    id: campo,
+    type: "fill",
+    source: "atlas",
+    "source-layer": "manzanos",
+    paint: {
+      "fill-color": [
+        "let",
+        "campo",
+        ["to-number", ["get", campos[campo]]],
+        [
+          "case",
+          [
+            "any",
+            ["!", ["has", campos[campo]]],
+            ["!=", ["var", "campo"], ["var", "campo"]],
+          ],
+          invalido,
+          ["interpolate", ["linear"], ["var", "campo"], ...colormap.flat()],
+        ],
+      ],
+      "fill-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.2, 12, 0.8],
+    },
+    minzoom: 8,
+  };
+}
+return {capaLineal};
+}});
+
+define({id: "739bda0e", inputs: ["maplibregl","posicion_inicial","invalidation"], outputs: ["container","map","popup"], body: (maplibregl,posicion_inicial,invalidation) => {
+// Inicializar el mapa
+
+const container = document.querySelector("#mapa");
+const map = new maplibregl.Map({
+  container: container,
+  center: posicion_inicial,
+  zoom: 11,
+  minZoom: 10,
+  maxZoom: 14,
+  scrollZoom: true,
+  style:
+    "https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json",
+  attributionControl: {
+    compact: true,
+    customAttribution:
+      "<a href='https://mauforonda.github.io/'>Mauricio Foronda</a>",
+  },
+});
+// Popup
+const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false });
+
+// Controles
+map.addControl(new maplibregl.NavigationControl(), "bottom-left");
+map.addControl(
+  new maplibregl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true,
+    },
+    showAccuracyCircle: false,
+    showUserLocation: true,
+  }),
+  "bottom-left"
+);
+
+invalidation.then(() => {
+  popup.remove();
+  map.remove();
+});
+return {container,map,popup};
+}});
+
+define({id: "61531f87", outputs: ["capaEtiquetas"], body: () => {
+// Capa de etiquetas
+
+const capaEtiquetas = {
+  source: {
+    type: "raster",
+    tiles: [
+      "https://a.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png",
+    ],
+    tileSize: 256,
+  },
+  layer: {
+    id: "etiquetas",
+    type: "raster",
+    source: "etiquetas",
+    paint: {
+      "raster-opacity": 0.8,
+    },
+  },
+};
+return {capaEtiquetas};
+}});
+
+define({id: "09c8beef", inputs: ["map","capaEtiquetas","PMTILES_URL"], outputs: ["ready"], body: (map,capaEtiquetas,PMTILES_URL) => {
+// Tras cargar el mapa, definir las fuentes y capas
+const ready = new Promise((resolve) => {
+  map.on("load", () => {
+    map.addSource("etiquetas", capaEtiquetas.source);
+    map.addLayer(capaEtiquetas.layer);
+    if (!map.getSource("atlas")) {
+      map.addSource("atlas", {
+        type: "vector",
+        url: `pmtiles://${PMTILES_URL}`,
+        minzoom: 8,
+        maxzoom: 14,
+      });
+    }
+    resolve();
+  });
+});
+return {ready};
+}});
+
+define({id: "887ddc81", inputs: ["map","campos","popup","d3","indice"], outputs: ["locked","bindHoverFor"], body: (map,campos,popup,d3,indice) => {
+// Cómo mostrar el popup
+let locked = false;
+function bindHoverFor(campo) {
+  if (map.__hoverHandlers) {
+    const { layer, enter, leave, clickIn, clickAny } = map.__hoverHandlers;
+    map.off("mouseenter", layer, enter);
+    map.off("mouseleave", layer, leave);
+    map.off("click", layer, clickIn);
+    map.off("click", clickAny);
+  }
+
+  const enter = (e) => {
+    map.getCanvas().style.cursor = "pointer";
+    const f = e.features && e.features[0];
+    if (!f) return;
+
+    const key = campos[campo];
+    const raw = f.properties?.[key];
+
+    const n = typeof raw === "number" ? raw : raw == null ? NaN : +raw;
+    if (!Number.isFinite(n)) {
+      map.getCanvas().style.cursor = "";
+      popup.remove();
+      return;
+    }
+
+    const fmt = d3.format(indice[campo].format);
+    popup
+      .setHTML(
+        `<div class="popup"><div class="descripcion">${
+          indice[campo].ayuda
+        }</div><div class="valor">${fmt(n)}</div></div>`
+      )
+      .setLngLat(e.lngLat)
+      .addTo(map);
+  };
+
+  const leave = () => {
+    map.getCanvas().style.cursor = "";
+    if (!locked) popup.remove();
+  };
+
+  const clickIn = () => {
+    locked = true;
+  };
+
+  const clickAny = (e) => {
+    const hit = map.queryRenderedFeatures(e.point, { layers: [campo] }).length;
+    if (!hit) {
+      locked = false;
+      popup.remove();
+    }
+  };
+
+  map.on("mouseenter", campo, enter);
+  map.on("mouseleave", campo, leave);
+  map.on("click", campo, clickIn);
+  map.on("click", clickAny);
+
+  map.__hoverHandlers = { layer: campo, enter, leave, clickIn, clickAny };
+}
+return {locked,bindHoverFor};
+}});
+
+define({id: "70904f5b", inputs: ["map","capaLineal","indice","bindHoverFor"], outputs: ["active","apply"], body: (map,capaLineal,indice,bindHoverFor) => {
+// Cambiar la capa
+let active = null;
+const apply = (campo) => {
+  if (active && map.getLayer(active)) map.removeLayer(active);
+  map.addLayer(capaLineal(campo, indice[campo].colormap), "etiquetas");
+  active = campo;
+  map.__activeId = campo;
+
+  bindHoverFor(campo);
+};
+return {active,apply};
+}});
+
+define({id: "c5b35b8c", inputs: ["ready","apply","seleccion"], body: async (ready,apply,seleccion) => {
+// Cambiar la capa cuando el usuario seleccione una variable
+{
+  await ready;
+  apply(seleccion);
+}
+}});
+
+</script>
+</head>
+<body>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/maplibre-gl@4.0.2/dist/maplibre-gl.css">
+<link rel="stylesheet" type="text/css" href="./_file/index.66d5a620.css">
+<header>
+  <header_titulo>
+    <titulo>Atlas urbano</titulo>
+    <subtitulo>con datos del Censo 2024</subtitulo>
+  </header_titulo>
+  <menu>
+    <observablehq-loading></observablehq-loading><!--:d6d41953:-->
+    <observablehq-loading></observablehq-loading><!--:41f8d30a:-->
+  </menu>
+  <leyenda>
+    <observablehq-loading></observablehq-loading><!--:655ea456:-->
+    <observablehq-loading></observablehq-loading><!--:5e35aeec:-->
+  </leyenda>
+</header>
+<div id="mapa"></div>
+<div class="observablehq observablehq--block"><!--:fab251a8:--></div>
+<div class="observablehq observablehq--block"><!--:155ced8b:--></div>
+<div class="observablehq observablehq--block"><!--:0fd06ca1:--></div>
+<div class="observablehq observablehq--block"><!--:8d33259d:--></div>
+<div class="observablehq observablehq--block"><!--:d57ad457:--></div>
+<div class="observablehq observablehq--block"><!--:00c3b845:--></div>
+<div class="observablehq observablehq--block"><!--:5b8e2a45:--></div>
+<div class="observablehq observablehq--block"><!--:5546ec3a:--></div>
+<div class="observablehq observablehq--block"><!--:f7966508:--></div>
+<div class="observablehq observablehq--block"><!--:84a7c40f:--></div>
+<div class="observablehq observablehq--block"><!--:cfd5da35:--></div>
+<div class="observablehq observablehq--block"><!--:c6f847fc:--></div>
+<div class="observablehq observablehq--block"><!--:38b8b69c:--></div>
+<div class="observablehq observablehq--block"><!--:6df928f1:--></div>
+<div class="observablehq observablehq--block"><!--:2e20f103:--></div>
+<div class="observablehq observablehq--block"><!--:739bda0e:--></div>
+<div class="observablehq observablehq--block"><!--:61531f87:--></div>
+<div class="observablehq observablehq--block"><!--:09c8beef:--></div>
+<div class="observablehq observablehq--block"><!--:887ddc81:--></div>
+<div class="observablehq observablehq--block"><!--:70904f5b:--></div>
+<div class="observablehq observablehq--block"><!--:c5b35b8c:--></div>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --header-height: 80px;
+  --background: #fbfbfb;
+  --soft: #a0a0a0;
+  --strong: #494949;
+}
+
+#observablehq-main,
+#observablehq-center {
+  margin: 0;
+  min-height: 100vh;
+}
+
+header {
+  z-index: 1;
+  padding: 10px;
+  height: auto;
+  background: var(--background);
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 10px;
+
+  header_titulo {
+    padding: 0 10px;
+    color: var(--strong);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    titulo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    subtitulo {
+      font-size: 0.7rem;
+    }
+  }
+
+  menu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    column-gap: 20px;
+    row-gap: 10px;
+
+    form {
+      margin: 0 !important;
+      max-width: 100%;
+      width: calc(var(--input-width) + var(--label-width));
+
+      select,
+      input {
+        background-color: var(--background);
+        border-radius: 5px;
+        border: 1px dotted var(--soft);
+        color: var(--strong) !important;
+        text-align: center;
+        padding: 5px;
+        scrollbar-width: none;
+      }
+
+      input {
+        width: 100%;
+        max-width: 360px !important;
+      }
+
+      &:hover {
+        box-shadow: 0 4px 12px rgba(136, 160, 195, 0.1);
+      }
+
+      &.autocomplete-form {
+        position: relative;
+
+        .autocomplete-wrapper {
+          position: relative;
+          width: 100%;
+
+          .autocomplete-input {
+            box-sizing: border-box;
+
+            &:focus {
+              outline: none;
+              border-color: var(--strong);
+            }
+          }
+
+          .autocomplete-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--background);
+            border: 1px solid
+              color-mix(in srgb, var(--background) 90%, var(--strong) 10%);
+            border-radius: 5px;
+            margin-top: 2px;
+            max-height: 240px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(136, 160, 195, 0.1);
+            z-index: 1000;
+            display: none;
+            scrollbar-width: none;
+
+            &.show {
+              display: block;
+            }
+
+            .autocomplete-option {
+              padding: 5px;
+              cursor: pointer;
+              color: var(--strong);
+              text-align: center;
+              font-size: 12px;
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              &:hover {
+                background-color: color-mix(
+                  in srgb,
+                  var(--background) 90%,
+                  var(--strong) 10%
+                );
+              }
+
+              &.selected {
+                background-color: color-mix(
+                  in srgb,
+                  var(--background) 90%,
+                  var(--strong) 10%
+                );
+              }
+
+              &.no-results {
+                color: var(--soft);
+                cursor: default;
+
+                &:hover {
+                  background-color: var(--background);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  leyenda {
+    display: flex;
+    gap: 10px;
+    .leyenda-ramp {
+      line {
+        stroke: var(--background);
+      }
+      text {
+        fill: var(--soft);
+        font-weight: 400;
+        font-size: 10px;
+      }
+      > text {
+        fill: var(--strong);
+        transform: translateY(-3px);
+      }
+    }
+    .leyenda-swatch {
+      color: var(--soft);
+    }
+  }
+}
+
+#mapa {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+
+  .maplibregl-popup {
+    z-index: 3;
+    .maplibregl-popup-content {
+      background: var(--background);
+      box-shadow: 0 4px 12px rgba(136, 160, 195, 0.4);
+      padding: 5px 8px;
+      color: var(--strong);
+      max-width: 150px;
+
+      .popup {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        align-items: center;
+        justify-content: center;
+
+        .descripcion {
+          font-size: 0.6rem;
+          line-height: 1.3;
+          flex: 1 1 auto;
+          min-width: 0;
+          text-align: center;
+        }
+
+        .valor {
+          font-weight: 600;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+    border-top-color: var(--background) !important;
+  }
+
+  .popup_header {
+    font-family: "Inter";
+    text-align: center;
+    opacity: 0.7;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--texto_fuerte);
+  }
+
+  .maplibregl-ctrl-group:not(:empty) {
+    box-shadow: none;
+  }
+
+  .maplibregl-ctrl {
+    filter: invert(var(--invert));
+  }
+}
+
+@media (max-width: 1190px) {
+  header {
+    justify-content: space-around;
+  }
+}
