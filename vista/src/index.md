@@ -221,7 +221,7 @@ const map = new maplibregl.Map({
   center: posicion_inicial,
   zoom: 11,
   minZoom: 10,
-  maxZoom: 16,
+  maxZoom: 14,
   scrollZoom: true,
   style:
     "https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json",
@@ -286,7 +286,7 @@ const ready = new Promise((resolve) => {
         type: "vector",
         url: `pmtiles://${PMTILES_URL}`,
         minzoom: 8,
-        maxzoom: 16,
+        maxzoom: 14,
       });
     }
     resolve();

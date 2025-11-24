@@ -37,7 +37,7 @@ jobs:
 
     - name: crear pmtiles
       run: |
-        tippecanoe -Z8 -z16 \
+        tippecanoe -Z8 -z14 \
           --no-line-simplification \
           --no-simplification-of-shared-nodes \
           --no-tiny-polygon-reduction \
