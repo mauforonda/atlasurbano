@@ -15,6 +15,7 @@ f = pd.read_parquet("datos/fichas.parquet")
 
 OUTPUT = Path("vista/src/")
 
+
 def filterSum(df, regex):
     return df[[c for c in df.columns if re.search(regex, c)]].sum(axis=1)
 
@@ -111,10 +112,34 @@ f["mujeres"] = filterSum(f, "^edad_.*_mujer$")
 f["masculinidad"] = (f.hombres / f.mujeres) * 100
 
 # Educación
-# Porcentaje de residentes en el país que culminaron la educación superior
+# Porcentaje de residentes en el país mayores a 19 años que culminaron la educación superior
 
+f["poblacion_residente_mayor"] = filterSum(f, "^educacion_.*")
 f["educacion_superior"] = (
-    filterSum(f, "^educacion_superior_.*") / f.poblacion_residente_pais
+    filterSum(f, "^educacion_superior_.*") / f.poblacion_residente_mayor
+)
+
+# Brecha de género en educación superior
+# Diferencia entre el porcentaje de residentes mayores a 19 años que culminaron la educación secundaria entre mujeres y hombres.
+
+f["brecha_genero_educacion"] = (
+    filterSum(f, "educacion_(secundaria|superior)_mujer")
+    / filterSum(f, "^educacion_.*_mujer$")
+) - (
+    filterSum(f, "educacion_(secundaria|superior)_hombre")
+    / filterSum(f, "^educacion_.*_hombre$")
+)
+
+
+# Brecha de género en acceso a seguro de salud
+# Diferencia entre el porcentaje de personas afiliadas a algún seguro entre mujeres y hombres.
+
+f["brecha_genero_seguro"] = (
+    filterSum(f, "^saludafiliacion_((?!ninguno).)*_mujer$")
+    / filterSum(f, "^saludafiliacion_.*_mujer$")
+) - (
+    filterSum(f, "^saludafiliacion_((?!ninguno).)*_hombre$")
+    / filterSum(f, "^saludafiliacion_.*_hombre$")
 )
 
 # Inmigrantes
@@ -128,6 +153,13 @@ f["poblacion_migrante"] = filterSum(f, "^nacimiento_otro.*") / f.poblacion_total
 f["ocupados_empleados"] = filterSum(f, "^ocupacion_empleado.*") / f.poblacion_ocupada
 f["ocupados_cuentapropistas"] = (
     filterSum(f, "^ocupacion_cuentapropia.*") / f.poblacion_ocupada
+)
+
+# Seguro privado
+# Porcentaje de residentes con seguro privado
+
+f["seguro_privado"] = (
+    filterSum(f, "^saludafiliacion_seguroprivado.*") / f.poblacion_residente_pais
 )
 
 # Actividades económicas
@@ -192,6 +224,7 @@ consolidado = (
                 "masculinidad",
                 "educacion_superior",
                 "poblacion_migrante",
+                "seguro_privado",
                 "ocupados_empleados",
                 "ocupados_cuentapropistas",
                 "poblacion_agricultura",
@@ -202,6 +235,8 @@ consolidado = (
                 "poblacion_alojamientoycomida",
                 "poblacion_enseñanza",
                 "poblacion_saludyasistencia",
+                "brecha_genero_educacion",
+                "brecha_genero_seguro",
                 "viviendas_desocupadas",
                 "viviendas_alquiladas_anticretico",
                 "viviendas_energiaelectrica_serviciopublico",

@@ -1,4 +1,4 @@
-export const indice = ({
+export const indice = {
   personas: {
     colormap: [
       [0, "#feebe2"],
@@ -37,11 +37,11 @@ export const indice = ({
   },
   porcentaje_menor20: {
     colormap: [
-      [0.2, "#f6eff7"],
-      [0.3, "#bdc9e1"],
-      [0.4, "#67a9cf"],
-      [0.5, "#1c9099"],
-      [0.6, "#016c59"],
+      [0.2, "#f7ecf6"],
+      [0.3, "#d3cce2"],
+      [0.4, "#a4afce"],
+      [0.5, "#6b96b7"],
+      [0.6, "#1b7e98"],
     ],
     nombre: "Porcentaje de jóvenes",
     ayuda: "número de personas menores a 20 años por cada 100 habitantes",
@@ -59,28 +59,53 @@ export const indice = ({
     ayuda: "número de personas mayores a 60 años por cada 100 habitantes",
     format: ".0%",
   },
+  educacion_superior: {
+    colormap: [
+      [0.1, "#f9eacb"],
+      [0.25, "#bbd5ad"],
+      [0.4, "#6ebfac"],
+      [0.55, "#00a2bb"],
+      [0.7, "#1c53c9"],
+    ],
+    nombre: "Porcentaje que terminó la educación superior",
+    ayuda:
+      "porcentaje de mayores de 19 años con educación superior",
+    format: ".0%",
+  },
   masculinidad: {
     colormap: [
-      [60, "#7b3294"],
-      [80, "#c2a5cf"],
-      [100, "#f7f7f7"],
-      [120, "#a6dba0"],
-      [140, "#008837"],
+      [60, "#894fc3"],
+      [80, "#ce7eb0"],
+      [100, "#dac0c4"],
+      [120, "#b28f86"],
+      [140, "#81644a"],
     ],
     nombre: "Índice de masculinidad",
     ayuda: "número de hombres por 100 mujeres",
     format: ".0f",
   },
-  educacion_superior: {
+  brecha_genero_educacion: {
     colormap: [
-      [0.1, "#f0f9e8"],
-      [0.2, "#bae4bc"],
-      [0.3, "#7bccc4"],
-      [0.4, "#43a2ca"],
-      [0.5, "#0868ac"],
+      [-0.3, "#81644a"],
+      [-0.1, "#b28f86"],
+      [0, "#dac0c4"],
+      [0.1, "#ce7eb0"],
+      [0.3, "#894fc3"],
     ],
-    nombre: "Porcentaje que terminó la educación superior",
-    ayuda: "porcentaje que terminó la educación superior",
+    nombre: "Brecha de género en educación",
+    ayuda: "porcentaje de mujeres - hombres con educación secundaria",
+    format: ".0%",
+  },
+  brecha_genero_seguro: {
+    colormap: [
+      [-0.3, "#81644a"],
+      [-0.1, "#b28f86"],
+      [0, "#dac0c4"],
+      [0.1, "#ce7eb0"],
+      [0.3, "#894fc3"],
+    ],
+    nombre: "Brecha de género en acceso a seguro de salud",
+    ayuda: "porcentaje de mujeres - hombres con seguro de salud",
     format: ".0%",
   },
   poblacion_migrante: {
@@ -93,6 +118,18 @@ export const indice = ({
     ],
     nombre: "Porcentaje de inmigrantes",
     ayuda: "porcentaje de personas que nacieron en otro municipio o país",
+    format: ".0%",
+  },
+  seguro_privado: {
+    colormap: [
+      [0.0, "#ddd8e9"],
+      [0.03, "#acc6e7"],
+      [0.06, "#5eb9d5"],
+      [0.09, "#00aaa6"],
+      [0.12, "#14955e"],
+    ],
+    nombre: "Porcentaje con seguro de salud privado",
+    ayuda: "porcentaje de residentes nacionales con seguro de salud privado",
     format: ".0%",
   },
   ocupados_empleados: {
@@ -121,11 +158,11 @@ export const indice = ({
   },
   poblacion_agricultura: {
     colormap: [
-      [0.0, "#e2e1cf"],
-      [0.1, "#dccda4"],
-      [0.2, "#dfb57d"],
-      [0.3, "#e5985f"],
-      [0.4, "#ec774d"],
+      [0.0, "#e6edf1"],
+      [0.1, "#c9d0ea"],
+      [0.2, "#ceaad2"],
+      [0.3, "#d98298"],
+      [0.4, "#c36a49"],
     ],
     nombre: "Porcentaje de trabajadores en agricultura",
     ayuda: "porcentaje de ocupados en agricultura",
@@ -133,11 +170,11 @@ export const indice = ({
   },
   poblacion_comercio: {
     colormap: [
-      [0.0, "#e2e1cf"],
-      [0.1, "#dccda4"],
-      [0.2, "#dfb57d"],
-      [0.3, "#e5985f"],
-      [0.4, "#ec774d"],
+      [0.0, "#e6edf1"],
+      [0.1, "#c9d0ea"],
+      [0.2, "#ceaad2"],
+      [0.3, "#d98298"],
+      [0.4, "#c36a49"],
     ],
     nombre: "Porcentaje de trabajadores en comercio",
     ayuda: "porcentaje de ocupados que trabajan en comercio",
@@ -145,11 +182,11 @@ export const indice = ({
   },
   poblacion_manufactura: {
     colormap: [
-      [0.0, "#e2e1cf"],
-      [0.075, "#dccda4"],
-      [0.15, "#dfb57d"],
-      [0.225, "#e5985f"],
-      [0.3, "#ec774d"],
+      [0.0, "#e6edf1"],
+      [0.075, "#c9d0ea"],
+      [0.15, "#ceaad2"],
+      [0.225, "#d98298"],
+      [0.3, "#c36a49"],
     ],
     nombre: "Porcentaje de trabajadores en manufactura",
     ayuda: "porcentaje de ocupados en manufactura",
@@ -157,11 +194,11 @@ export const indice = ({
   },
   poblacion_transporte: {
     colormap: [
-      [0.0, "#e2e1cf"],
-      [0.05, "#dccda4"],
-      [0.1, "#dfb57d"],
-      [0.15, "#e5985f"],
-      [0.2, "#ec774d"],
+      [0.0, "#e6edf1"],
+      [0.05, "#c9d0ea"],
+      [0.1, "#ceaad2"],
+      [0.15, "#d98298"],
+      [0.2, "#c36a49"],
     ],
     nombre: "Porcentaje de trabajadores en transporte",
     ayuda: "porcentaje de ocupados en transporte",
@@ -169,11 +206,11 @@ export const indice = ({
   },
   poblacion_construccion: {
     colormap: [
-      [0.0, "#e2e1cf"],
-      [0.05, "#dccda4"],
-      [0.1, "#dfb57d"],
-      [0.15, "#e5985f"],
-      [0.2, "#ec774d"],
+      [0.0, "#e6edf1"],
+      [0.05, "#c9d0ea"],
+      [0.1, "#ceaad2"],
+      [0.15, "#d98298"],
+      [0.2, "#c36a49"],
     ],
     nombre: "Porcentaje de trabajadores en construcción",
     ayuda: "porcentaje de ocupados en construcción",
@@ -181,11 +218,11 @@ export const indice = ({
   },
   poblacion_alojamientoycomida: {
     colormap: [
-      [0.0, "#e2e1cf"],
-      [0.05, "#dccda4"],
-      [0.1, "#dfb57d"],
-      [0.15, "#e5985f"],
-      [0.2, "#ec774d"],
+      [0.0, "#e6edf1"],
+      [0.05, "#c9d0ea"],
+      [0.1, "#ceaad2"],
+      [0.15, "#d98298"],
+      [0.2, "#c36a49"],
     ],
     nombre: "Porcentaje de trabajadores en alojamiento y comida",
     ayuda: "porcentaje de ocupados en alojamiento y comida",
@@ -193,11 +230,11 @@ export const indice = ({
   },
   poblacion_enseñanza: {
     colormap: [
-      [0.0, "#e2e1cf"],
-      [0.04, "#dccda4"],
-      [0.08, "#dfb57d"],
-      [0.12, "#e5985f"],
-      [0.16, "#ec774d"],
+      [0.0, "#e6edf1"],
+      [0.04, "#c9d0ea"],
+      [0.08, "#ceaad2"],
+      [0.12, "#d98298"],
+      [0.16, "#c36a49"],
     ],
     nombre: "Porcentaje de trabajadores en educación",
     ayuda: "porcentaje de ocupados en educación",
@@ -205,11 +242,11 @@ export const indice = ({
   },
   poblacion_saludyasistencia: {
     colormap: [
-      [0.0, "#e2e1cf"],
-      [0.04, "#dccda4"],
-      [0.08, "#dfb57d"],
-      [0.12, "#e5985f"],
-      [0.16, "#ec774d"],
+      [0.0, "#e6edf1"],
+      [0.04, "#c9d0ea"],
+      [0.08, "#ceaad2"],
+      [0.12, "#d98298"],
+      [0.16, "#c36a49"],
     ],
     nombre: "Porcentaje de trabajadores en salud",
     ayuda: "porcentaje de ocupados en salud y asistencia",
@@ -299,4 +336,4 @@ export const indice = ({
     ayuda: "porcentaje de viviendas particulares con internet fijo o móvil",
     format: ".0%",
   },
-});
+};
