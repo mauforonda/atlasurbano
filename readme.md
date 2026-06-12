@@ -1,8 +1,8 @@
 ## Datos del Censo 2024 en Bolivia a nivel de manzano
 
-El [geoportal oficial](https://geoportal.ine.gob.bo/) de resultados censales permite consultar datos para cada manzano. En este repositorio descargo estos datos y construyo un mapa para observar patrones espaciales desde ellos.
+El [geoportal oficial](https://idg.ine.gob.bo/) de resultados censales permite consultar datos para cada manzano. En este repositorio descargo estos datos y construyo un mapa para observar patrones espaciales desde ellos.
 
-Podemos consultar el número de personas y viviendas para cada manzano, pero el INE sólo nos permite descargar más información en casos donde hayan suficientes personas, por razones de privacidad. Existen 247,346 manzanos a nivel nacional. De éstos, podemos descargar fichas completas para 131,788 (53.28%), donde viven 7,901,688 personas (89.5% de la población nacional) y donde se encuentran 2,920,339 viviendas(87.16% de la viviendas a nivel nacional).
+Podemos consultar el número de personas y viviendas para cada manzano, pero el INE sólo nos permite descargar más información en casos donde hayan suficientes personas, por razones de privacidad. Existen 247,429 manzanos a nivel nacional. De éstos, podemos descargar fichas completas para 131,801 131,788 (53.26%), donde viven 7,902,247 personas (89.5% de la población nacional) y donde se encuentran 2,920,339 viviendas(87.16% de la viviendas a nivel nacional).
 
 ## Datos
 
@@ -20,9 +20,9 @@ Ofrezco 3 conjuntos de datos:
 | :------------ | :------- | -------: | --------: |
 | 00599713523-A | False    |       14 |        10 |
 
-[fichas.parquet](datos/fichas.parquet): un parquet con la ficha completa para manzanos donde es posible descargarla, con los siguientes campos:
+[fichas.parquet](datos/fichas.parquet): un parquet con datos de las fichas completas para manzanos donde es posible descargarlas, con los siguientes campos:
 
-| campo                                 | ejemplo         |
+| campo                                 | ejemplo       |
 | :------------------------------------ | :------------ |
 | codigo                                | 00417298575-A |
 | edad_0a19_hombre                      | 13.0          |
@@ -161,17 +161,56 @@ Ofrezco 3 conjuntos de datos:
 | tics_televisor                        | 37.0          |
 | tics_celular                          | 39.0          |
 | tics_internet                         | 39.0          |
+| material_paredes_ladrillo             | 38.0          |
+| material_paredes_adobe                | 5.0           |
+| material_paredes_tabique              | 0.0           |
+| material_paredes_piedra               | 0.0           |
+| material_paredes_madera               | 0.0           |
+| material_paredes_caña                 | 0.0           |
+| material_paredes_otro                 | 0.0           |
+| material_revoque_con                  | 41.0          |
+| material_revoque_sin                  | 2.0           |
+| material_techo_calamina               | 16.0          |
+| material_techo_teja                   | 22.0          |
+| material_techo_losa                   | 3.0           |
+| material_techo_paja                   | 1.0           |
+| material_techo_otro                   | 1.0           |
+| material_piso_tierra                  | 0.0           |
+| material_piso_madera                  | 0.0           |
+| material_piso_machimbre               | 3.0           |
+| material_piso_ceramica                | 31.0          |
+| material_piso_cemento                 | 3.0           |
+| material_piso_mosaico                 | 4.0           |
+| material_piso_ladrillo                | 2.0           |
+| material_piso_flotante                | 0.0           |
+| material_piso_otro                    | 0.0           |
+| hacinamiento_sin                      | 37.0          |
+| hacinamiento_medio                    | 4.0           |
+| hacinamiento_alto                     | 2.0           |
+| hogar_unipersonal                     | 8.0           |
+| hogar_parejanuclear                   | 4.0           |
+| hogar_monoparental                    | 10.0          |
+| hogar_nuclearcompleto                 | 8.0           |
+| hogar_extendido                       | 12.0          |
+| hogar_compuesto                       | 1.0           |
+| hogar_otro                            | 0.0           |
+| hogar_sinjefe                         | 0.0           |
 
-Puedes consultar [el pdf de esta ficha](recursos/ficha_ejemplo.pdf) para comprender qué representa cada valor.
+Esta información viene de 2 fichas:
+
+- Una ficha base con información de la población y vivienda, [ejemplo](recursos/ficha_ejemplo.pdf).
+- Una ficha con más información de la vivienda, [ejemplo](recursos/ficha_vivienda_ejemplo.pdf)
+
+Puedes consultar estas fichas de ejemplo para comprender el significado de cada valor.
 
 ## Descarga
 
-Para construir estos datos, escribí 2 cuadernos:
+Para construir estos datos se usaron estos scripts:
 
-- [Descarga de polígonos](descarga_poligonos.ipynb)
-- [Descarga de datos](armando_manzanero.ipynb)
+- [descargar_manzanos.py](descargar_manzanos.py): descarga los polígonos de manzanos y produce `datos/manzanos.parquet`.
+- [descargar_fichas.py](descargar_fichas.py): descarga, reanuda y exporta `datos/poblacion.parquet` y `datos/fichas.parquet`.
 
-Estos cuadernos dependen de [un listado de municipios](recursos/municipios.csv) y [un diccionario de los campos en cada ficha](recursos/campos.json).
+Los cuadernos siguen siendo útiles para exploración e iteración, pero los scripts son la ruta recomendada para regenerar los datos. Tanto cuadernos como scripts dependen de [un listado de municipios](recursos/municipios.csv) y [un diccionario de los campos en cada ficha](recursos/campos.json).
 
 Mientras el geoportal no cambie mucho, debería ser posible volver a correr este código para reproducir los valores en este repositorio (sin embargo, la descarga de datos podría tomar varios días).
 
