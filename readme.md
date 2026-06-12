@@ -198,8 +198,8 @@ Ofrezco 3 conjuntos de datos:
 
 Esta información viene de 2 fichas:
 
-- Una ficha base con información de la población y vivienda, [ejemplo](recursos/ficha_ejemplo.pdf).
-- Una ficha con más información de la vivienda, [ejemplo](recursos/ficha_vivienda_ejemplo.pdf)
+- Una ficha base con información de la población y vivienda: [ejemplo](recursos/ficha_ejemplo.pdf).
+- Una ficha con más información de la vivienda: [ejemplo](recursos/ficha_vivienda_ejemplo.pdf)
 
 Puedes consultar estas fichas de ejemplo para comprender el significado de cada valor.
 
@@ -210,7 +210,7 @@ Para construir estos datos se usaron estos scripts:
 - [descargar_manzanos.py](descargar_manzanos.py): descarga los polígonos de manzanos y produce `datos/manzanos.parquet`.
 - [descargar_fichas.py](descargar_fichas.py): descarga, reanuda y exporta `datos/poblacion.parquet` y `datos/fichas.parquet`.
 
-Los cuadernos siguen siendo útiles para exploración e iteración, pero los scripts son la ruta recomendada para regenerar los datos. Tanto cuadernos como scripts dependen de [un listado de municipios](recursos/municipios.csv) y [un diccionario de los campos en cada ficha](recursos/campos.json).
+Estos scripts dependen de [un listado de municipios](recursos/municipios.csv) y [un diccionario de los campos en cada ficha](recursos/campos.json).
 
 Mientras el geoportal no cambie mucho, debería ser posible volver a correr este código para reproducir los valores en este repositorio (sin embargo, la descarga de datos podría tomar varios días).
 
