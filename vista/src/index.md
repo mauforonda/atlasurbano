@@ -40,7 +40,8 @@ sidebar: false
 
 ```js
 // Dependencias para el mapa
-import maplibregl from "npm:maplibre-gl";
+import maplibregl from "npm:maplibre-gl@4.0.2";
+import {estiloClaro} from "./components/basemap.js";
 import { PMTiles, Protocol } from "npm:pmtiles";
 const protocol = new Protocol();
 maplibregl.addProtocol("pmtiles", protocol.tile);
@@ -223,8 +224,7 @@ const map = new maplibregl.Map({
   minZoom: 10,
   maxZoom: 14,
   scrollZoom: true,
-  style:
-    "https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json",
+  style: estiloClaro,
   attributionControl: {
     compact: true,
     customAttribution:
@@ -254,33 +254,9 @@ invalidation.then(() => {
 ```
 
 ```js
-// Capa de etiquetas
-
-const capaEtiquetas = {
-  source: {
-    type: "raster",
-    tiles: [
-      "https://a.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png",
-    ],
-    tileSize: 256,
-  },
-  layer: {
-    id: "etiquetas",
-    type: "raster",
-    source: "etiquetas",
-    paint: {
-      "raster-opacity": 0.8,
-    },
-  },
-};
-```
-
-```js
 // Tras cargar el mapa, definir las fuentes y capas
 const ready = new Promise((resolve) => {
   map.on("load", () => {
-    map.addSource("etiquetas", capaEtiquetas.source);
-    map.addLayer(capaEtiquetas.layer);
     if (!map.getSource("atlas")) {
       map.addSource("atlas", {
         type: "vector",
